@@ -9,5 +9,4 @@ public class MaximumTest {
 			max = c;
 		return max;
 	}
-
 }
