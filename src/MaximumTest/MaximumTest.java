@@ -1,33 +1,28 @@
 package MaximumTest;
 
-public class MaximumTest {
-	// UC1
-	public static Integer maxNumber(Integer a, Integer b, Integer c) {
-		Integer max = a;
-		if (b.compareTo(max) > 0)
-			max = b;
-		if (c.compareTo(max) > 0)
-			max = c;
-		return max;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.NoSuchElementException;
+
+public class MaximumTest<T extends Comparable<T>> {
+	List<T> list = new ArrayList<>();
+
+	public MaximumTest(T... parameters) {
+		for (T t : parameters)
+			this.list.add(t);
 	}
 
-	// UC2
-	public static Float maxNumber(Float a, Float b, Float c) {
-		Float max = a;
-		if (b.compareTo(max) > 0)
-			max = b;
-		if (c.compareTo(max) > 0)
-			max = c;
-		return max;
+	public T maximum() {
+		return MaximumTest.maximum(list);
 	}
 
-	// UC3
-	public static String maxString(String a, String b, String c) {
-		String max = a;
-		if (b.compareTo(max) > 0)
-			max = b;
-		if (c.compareTo(max) > 0)
-			max = c;
-		return max;
+	public static <T extends Comparable<T>> T maximum(List<T> list) {
+		try {
+			return Collections.max(list);
+		} catch (NoSuchElementException e) {
+			System.err.println("There is no element. Pass atleast one element.");
+			return null;
+		}
 	}
 }
